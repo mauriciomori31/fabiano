@@ -1,0 +1,6 @@
+base settings
+.env
+.env.local
+.claude/settings.local.json
+.vscode/
+node_modules/

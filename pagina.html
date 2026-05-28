@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dr. Fabiano Maluf — Clínica Odontológica</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #1a1817;
+        --surface: #ede9e3;
+        --surface-rgb: 237, 233, 227;
+        --accent: #d94a2b;
+        --muted: #7a746e;
+        --hairline: #cfc8be;
+        --divider: rgba(15, 15, 15, 0.12);
+
+        --font-display: "Archivo", sans-serif;
+        --font-body: "Archivo", sans-serif;
+        --font-mono: "JetBrains Mono", monospace;
+
+        --content-max: 1200px;
+        --section-y: 160px;
+        --stripe-fill: repeating-linear-gradient(
+          135deg,
+          rgba(15, 15, 15, 0.045) 0 1px,
+          transparent 1px 10px
+        );
+
+        --transition: 200ms ease;
+      }
+
+      [data-theme="dark"] {
+        --ink: #ede9e3;
+        --surface: #1a1817;
+        --surface-rgb: 26, 24, 23;
+        --accent: #f57c60;
+        --muted: #aaa9a6;
+        --hairline: #3a3734;
+        --divider: rgba(237, 233, 227, 0.12);
+
+        --stripe-fill: repeating-linear-gradient(
+          135deg,
+          rgba(237, 233, 227, 0.045) 0 1px,
+          transparent 1px 10px
+        );
+      }
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family: var(--font-body);
+        color: var(--ink);
+        background: var(--surface);
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .container {
+        max-width: var(--content-max);
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+
+      /* ── NAV ── */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+        background: var(--surface);
+        border-bottom: 1px solid var(--divider);
+      }
+
+      nav .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 80px;
+      }
+
+      .nav-logo {
+        font-family: var(--font-display);
+        font-size: 1.25rem;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+      }
+
+      .nav-logo span {
+        color: var(--accent);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 32px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        font-weight: 600;
+        color: var(--ink);
+        text-decoration: none;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        transition: var(--transition);
+      }
+
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+
+      /* ── LAYOUT BANDS ── */
+      .band {
+        width: 100%;
+        padding: var(--section-y) 0;
+        border-bottom: 1px solid var(--divider);
+        position: relative;
+      }
+
+      .band--plain {
+        background: transparent;
+      }
+      .band--stripe {
+        background-image: var(--stripe-fill);
+      }
+
+      /* ── TYPOGRAPHY ── */
+      .eyebrow {
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 24px;
+        display: block;
+      }
+
+      h1 {
+        font-family: var(--font-display);
+        font-size: clamp(2.75rem, 5vw, 4.25rem);
+        font-weight: 800;
+        line-height: 0.95;
+        letter-spacing: -0.04em;
+        margin-bottom: 32px;
+      }
+
+      h2 {
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 800;
+        line-height: 1.05;
+        letter-spacing: -0.04em;
+        margin-bottom: 24px;
+      }
+
+      h3 {
+        font-family: var(--font-display);
+        font-size: 1.25rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin-bottom: 12px;
+      }
+
+      .desc {
+        font-size: 1rem;
+        color: var(--muted);
+        max-width: 60ch;
+        margin-bottom: 40px;
+      }
+
+      /* ── CTAs ── */
+      .btn {
+        display: inline-block;
+        font-family: var(--font-display);
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        padding: 13px 24px;
+        transition: var(--transition);
+        cursor: pointer;
+        border: none;
+      }
+
+      .btn--primary {
+        background: var(--ink);
+        color: var(--surface);
+      }
+
+      .btn--primary:hover {
+        background: var(--accent);
+      }
+
+      .btn--secondary {
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--ink);
+      }
+
+      .btn--secondary:hover {
+        background: var(--ink);
+        color: var(--surface);
+      }
+
+      /* ── SECTIONS ── */
+      .hero .container {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 60px;
+        align-items: center;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 48px;
+        padding-top: 32px;
+        border-top: 1px solid var(--hairline);
+      }
+
+      .hero-image {
+        width: 100%;
+        aspect-ratio: 1/1;
+        background-image: url("excelencia.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .stat-num {
+        font-family: var(--font-display);
+        font-size: 2.5rem;
+        font-weight: 700;
+        display: block;
+      }
+
+      .stat-label {
+        font-family: var(--font-mono);
+        font-size: 0.625rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--divider);
+        border: 1px solid var(--divider);
+      }
+
+      .service-card {
+        background: var(--surface);
+        padding: 48px;
+        transition: var(--transition);
+      }
+
+      .service-card:hover {
+        background: rgba(15, 15, 15, 0.02);
+      }
+
+      .service-icon {
+        font-size: 1.5rem;
+        margin-bottom: 24px;
+        display: block;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+
+      .about-image {
+        aspect-ratio: 4/5;
+        background: var(--hairline);
+        background-image: url("nossa%20clinica.jpg");
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+
+      .about-badge {
+        position: absolute;
+        bottom: -20px;
+        right: -20px;
+        background: var(--ink);
+        color: var(--surface);
+        padding: 32px;
+        text-align: center;
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 48px;
+      }
+
+      .testimonial {
+        position: relative;
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        font-size: 1.125rem;
+        margin-bottom: 24px;
+        color: var(--ink);
+      }
+
+      .testimonial-author {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+      }
+
+      .form-group {
+        margin-bottom: 24px;
+      }
+
+      .form-label {
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+        display: block;
+      }
+
+      .form-input,
+      .form-select,
+      .form-textarea {
+        width: 100%;
+        background: transparent;
+        border: 1px solid var(--hairline);
+        padding: 12px;
+        font-family: var(--font-body);
+        font-size: 1rem;
+        color: var(--ink);
+        outline: none;
+        transition: var(--transition);
+      }
+
+      .form-input:focus,
+      .form-select:focus,
+      .form-textarea:focus {
+        border-color: var(--ink);
+      }
+
+      footer {
+        padding: 80px 0;
+        background: var(--surface);
+        border-top: 1px solid var(--divider);
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 60px;
+      }
+
+      .footer-heading {
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+        color: var(--muted);
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 12px;
+      }
+
+      .footer-links a {
+        font-size: 0.875rem;
+        color: var(--muted);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .footer-links a:hover {
+        color: var(--ink);
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 1024px) {
+        :root {
+          --section-y: 120px;
+        }
+        .hero .container,
+        .about-grid,
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 48px;
+        }
+        .services-grid,
+        .testimonials-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        :root {
+          --section-y: 96px;
+        }
+        .services-grid,
+        .testimonials-grid,
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+        .nav-links {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="container">
+        <div class="nav-logo">Dr<span>.</span>Fabiano Maluf</div>
+        <ul class="nav-links">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#servicos">Tratamentos</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+        <button
+          id="theme-toggle"
+          class="btn btn--secondary"
+          style="padding: 10px 20px; font-size: 0.75rem; margin-right: 16px"
+        >
+          🌙 Modo Escuro
+        </button>
+        <a
+          href="#contato"
+          class="nav-cta btn btn--primary"
+          style="padding: 10px 20px; font-size: 0.75rem"
+          >Agendar</a
+        >
+      </div>
+    </nav>
+
+    <section
+      class="band band--plain hero"
+      id="inicio"
+      style="padding-top: 240px"
+    >
+      <div class="container">
+        <div>
+          <span class="eyebrow">Clínica Odontológica</span>
+          <h1>Seu sorriso em boas mãos.</h1>
+          <p class="desc">
+            Tratamentos odontológicos com tecnologia, conforto e atendimento
+            humanizado para transformar sua saúde bucal.
+          </p>
+          <a href="#contato" class="btn btn--primary">Agendar consulta</a>
+
+          <div class="hero-stats">
+            <div>
+              <span class="stat-num">15+</span>
+              <span class="stat-label">Anos de Exp.</span>
+            </div>
+            <div>
+              <span class="stat-num">2k+</span>
+              <span class="stat-label">Pacientes</span>
+            </div>
+            <div>
+              <span class="stat-num">98%</span>
+              <span class="stat-label">Satisfação</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-image"></div>
+      </div>
+    </section>
+
+    <section class="band band--stripe" id="servicos">
+      <div class="container">
+        <span class="eyebrow">Nossos Serviços</span>
+        <h2>Cuidados especializados para cada necessidade.</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <span class="service-icon">01</span>
+            <h3>Implantodontia</h3>
+            <p class="desc" style="font-size: 0.875rem">
+              Implantes de alta qualidade with planejamento digital 3D.
+            </p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon">02</span>
+            <h3>Estética Dental</h3>
+            <p class="desc" style="font-size: 0.875rem">
+              Lentes de contato e clareamento para um sorriso natural.
+            </p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon">03</span>
+            <h3>Ortodontia</h3>
+            <p class="desc" style="font-size: 0.875rem">
+              Alinhadores invisíveis e aparelhos modernos.
+            </p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon">04</span>
+            <h3>Prevenção</h3>
+            <p class="desc" style="font-size: 0.875rem">
+              Limpezas profundas e avaliações periódicas.
+            </p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon">05</span>
+            <h3>Endodontia</h3>
+            <p class="desc" style="font-size: 0.875rem">
+              Tratamentos de canal com tecnologia avançada.
+            </p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon">06</span>
+            <h3>Prótese</h3>
+            <p class="desc" style="font-size: 0.875rem">
+              Materiais de última geração para função impecável.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band--plain" id="sobre">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-image">
+            <div class="about-badge">
+              <span class="stat-num" style="color: var(--accent)">15+</span>
+              <span class="stat-label" style="color: var(--surface)"
+                >Anos de Excelência</span
+              >
+            </div>
+          </div>
+          <div>
+            <span class="eyebrow">Sobre a Clínica</span>
+            <h2>Tecnologia e humanização em cada detalhe.</h2>
+            <p class="desc">
+              Combinamos equipamentos de última geração com uma abordagem
+              centrada no paciente. Cada tratamento é personalizado para
+              garantir seu conforto.
+            </p>
+            <a href="#contato" class="btn btn--secondary">Conhecer mais</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band--stripe" id="depoimentos">
+      <div class="container">
+        <span class="eyebrow">Depoimentos</span>
+        <h2>O que nossos pacientes dizem.</h2>
+        <div class="testimonials-grid">
+          <div class="testimonial">
+            <p class="testimonial-text">
+              "Finalmente encontrei uma clínica onde me senti realmente
+              confortável."
+            </p>
+            <span class="testimonial-author">Maria Luiza — Implantes</span>
+          </div>
+          <div class="testimonial">
+            <p class="testimonial-text">
+              "As lentes de contato mudaram meu sorriso e minha autoestima."
+            </p>
+            <span class="testimonial-author">Ricardo Costa — Estética</span>
+          </div>
+          <div class="testimonial">
+            <p class="testimonial-text">
+              "Equipe extremamente atenciosa. Do agendamento ao pós-tratamento."
+            </p>
+            <span class="testimonial-author">Ana Silva — Ortodontia</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band--plain" id="contato">
+      <div class="container">
+        <div class="contact-grid">
+          <div>
+            <span class="eyebrow">Contato</span>
+            <h2>Agende sua consulta.</h2>
+            <p class="desc">
+              Entre em contato para uma avaliação. Retornamos o mais breve
+              possível.
+            </p>
+
+            <div style="margin-top: 48px">
+              <div class="form-group">
+                <span class="stat-label">Endereço</span>
+                <p>Rua 11 de junho, 1242 — Indaiatuba, SP</p>
+              </div>
+              <div class="form-group">
+                <span class="stat-label">Telefone</span>
+                <p>(19) 3834-5057</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              background: rgba(15, 15, 15, 0.02);
+              padding: 48px;
+              border: 1px solid var(--divider);
+            "
+          >
+            <form>
+              <div class="form-group">
+                <label class="form-label">Nome</label>
+                <input type="text" class="form-input" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">E-mail</label>
+                <input type="email" class="form-input" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Mensagem</label>
+                <textarea class="form-textarea" rows="4"></textarea>
+              </div>
+              <button
+                type="submit"
+                class="btn btn--primary"
+                style="width: 100%"
+              >
+                Enviar solicitação
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="nav-logo" style="margin-bottom: 24px">
+              Dr<span>.</span>Fabiano Maluf
+            </div>
+            <p class="desc" style="font-size: 0.875rem">
+              Excelência em odontologia, combinando tecnologia e humanização.
+            </p>
+          </div>
+          <div>
+            <h4 class="footer-heading">Tratamentos</h4>
+            <ul class="footer-links">
+              <li><a href="#">Implantes</a></li>
+              <li><a href="#">Estética</a></li>
+              <li><a href="#">Ortodontia</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="footer-heading">Clínica</h4>
+            <ul class="footer-links">
+              <li><a href="#">Sobre</a></li>
+              <li><a href="#">Contato</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="footer-heading">Legal</h4>
+            <span class="stat-label">CRO-SP 12345</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const nav = document.querySelector("nav");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 40) {
+          nav.style.background = "rgba(var(--surface-rgb), 0.95)";
+          nav.style.boxShadow = "0 10px 30px rgba(0, 0, 0, 0.05)";
+        } else {
+          nav.style.background = "var(--surface)";
+          nav.style.boxShadow = "none";
+        }
+      });
+
+      // Dark mode toggle
+      const themeToggle = document.getElementById("theme-toggle");
+      const root = document.documentElement;
+
+      // Check for saved theme preference or use system preference
+      const savedTheme = localStorage.getItem("theme");
+      if (
+        savedTheme === "dark" ||
+        (!savedTheme &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        root.setAttribute("data-theme", "dark");
+        themeToggle.textContent = "☀️ Modo Claro";
+      }
+
+      themeToggle.addEventListener("click", () => {
+        if (root.getAttribute("data-theme") === "dark") {
+          root.removeAttribute("data-theme");
+          themeToggle.textContent = "🌙 Modo Escuro";
+          localStorage.setItem("theme", "light");
+        } else {
+          root.setAttribute("data-theme", "dark");
+          themeToggle.textContent = "☀️ Modo Claro";
+          localStorage.setItem("theme", "dark");
+        }
+      });
+    </script>
+  </body>
+</html>

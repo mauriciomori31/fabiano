@@ -1,0 +1,10 @@
+{
+  "env": {
+    "OPENROUTER_API_KEY": "sk-a42728405a77d15d-6b0e59-7fc524a1",
+    "ANTHROPIC_BASE_URL": "https://llm.ntwsaas.app.br/v1",
+    "ANTHROPIC_AUTH_TOKEN": "sk-a42728405a77d15d-6b0e59-7fc524a1",
+    "ANTHROPIC_API_KEY": "",
+    "ANTHROPIC_MODEL": "melhores"
+  },
+  "theme": "dark"
+}
